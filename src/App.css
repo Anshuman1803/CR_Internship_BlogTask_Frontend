@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
+
+/* font-weight: 400, 500, 700, 900; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(17, 24, 39);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* Loader Container */
+.loaderContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.151);
+  border-radius: 10px;
+}
+
+.lds-default {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-default div {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: lds-default 1.2s linear infinite;
+}
+
+.lds-default div:nth-child(1) {
+  animation-delay: 0s;
+  top: 37px;
+  left: 66px;
+}
+
+.lds-default div:nth-child(2) {
+  animation-delay: -0.1s;
+  top: 22px;
+  left: 62px;
+}
+
+.lds-default div:nth-child(3) {
+  animation-delay: -0.2s;
+  top: 11px;
+  left: 52px;
+}
+
+.lds-default div:nth-child(4) {
+  animation-delay: -0.3s;
+  top: 7px;
+  left: 37px;
+}
+
+.lds-default div:nth-child(5) {
+  animation-delay: -0.4s;
+  top: 11px;
+  left: 22px;
+}
+
+.lds-default div:nth-child(6) {
+  animation-delay: -0.5s;
+  top: 22px;
+  left: 11px;
+}
+
+.lds-default div:nth-child(7) {
+  animation-delay: -0.6s;
+  top: 37px;
+  left: 7px;
+}
+
+.lds-default div:nth-child(8) {
+  animation-delay: -0.7s;
+  top: 52px;
+  left: 11px;
+}
+
+.lds-default div:nth-child(9) {
+  animation-delay: -0.8s;
+  top: 62px;
+  left: 22px;
+}
+
+.lds-default div:nth-child(10) {
+  animation-delay: -0.9s;
+  top: 66px;
+  left: 37px;
+}
+
+.lds-default div:nth-child(11) {
+  animation-delay: -1s;
+  top: 62px;
+  left: 52px;
+}
+
+.lds-default div:nth-child(12) {
+  animation-delay: -1.1s;
+  top: 52px;
+  left: 62px;
+}
+
+@keyframes lds-default {
+
+  0%,
+  20%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+/* ######################################## */
+
+#root {
+  background-color: rgb(17, 24, 39);
+  min-height: 100vh;
+}
+
+.App__header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: sticky;
+  top: 0;
+  background-color: rgb(17, 24, 39);
+  z-index: 5;
+}
+
+.Header__LOGOContainer {
+  height: 75px;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 50%;
+  position: relative;
+}
+
+.Header__LOGOContainer::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  animation: rotation 2.5s infinite linear;
+  box-shadow: rgba(255, 166, 0) 0px 1px 2px 0px, rgba(255, 166, 0) 0px 1px 6px 2px;
+  transition: all 0.6s ease-in-out;
+}
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Header_appLOGO {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.appSection {
+  min-height: 100vh;
+}
+
+.Header__LOGOContainer:hover .Header_appLOGO {
+  animation: none;
+}
+
+.appHeader__HamMenu {
+  border-radius: 10px;
+  box-shadow: rgba(252, 252, 252, 0.25) 0px 1px 1px, rgba(247, 247, 247, 0.13) 0px 0px 1px 1px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  display: none;
+}
+
+.appHeader__HamMenu:hover {
+  box-shadow: rgba(252, 252, 252, 0.75) 0px 1px 1px, rgba(247, 247, 247, 0.63) 0px 0px 1px 1px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.AppNavbar__Container {
+  /* border: 2px solid red; */
+  gap: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-right: 1em;
+}
+
+.App_navbar {
+  /* border: 2px solid white; */
+  width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.AppNavbar__Item {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.39);
+  display: block;
+  width: 120px;
+  padding: 0.5em;
+  border-radius: 0 15px;
+  text-align: center;
+}
+
+.AppNavbar__Item.active {
+  border: 1px solid rgba(255, 166, 0, 0.5);
+}
+
+.AppNavbar__Item.active:hover {
+  box-shadow: rgba(255, 166, 0, 0.3) 0px 1px 2px 0px, rgba(255, 166, 0, 0.3) 0px 2px 6px 2px;
+}
+
+.AppNavbar__Item:hover {
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px, rgba(255, 255, 255, 0.15) 0px 2px 6px 2px;
+  cursor: pointer;
+}
+
+
+.DropDownMenu_Container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.CurrentUserName__FLetter {
+  background-color: #1f2937;
+  border-radius: 50%;
+  display: block;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dropDownMENU {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  top: 100%;
+  width: 300px;
+  right: 0px;
+  position: absolute;
+  border-bottom-left-radius: 5px;
+  display: none;
+}
+
+.dropDownMENU__Item {
+  padding: 0em 0.8em 0em 0.5em;
+  height: 60px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.dropDownMENUItem__ICON {
+  font-size: 22px;
+  color: rgb(255, 166, 0);
+}
+
+.dropDownMENU__Item:nth-child(2) {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.dropDownMENU__Item:nth-child(2):hover {
+  border-bottom-left-radius: 5px;
+}
+
+.dropDownMENU__Item:hover {
+  cursor: pointer;
+  background-color: #1f2937;
+}
+
+
+.DropDownMenu_Container:hover .dropDownMENU {
+  display: block;
+}
+
+/* User FormContainer */
+.userForm__Container {
+  background-image: url(./Assets/FormBG.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UserForm {
+  background-color: rgb(17, 24, 39);
+  width: 450px;
+  height: 550px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.UserLogInForm {
+  height: 420px;
+}
+
+.UserForm__title {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.349);
+  font-size: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UserForm__ItemBox {
+  width: 90%;
+  margin: 20px auto;
+  height: 70px;
+  position: relative;
+}
+
+.UserForm__Item {
+  border: none;
+  outline: none;
+  background-color: #1f2937;
+  width: 100%;
+  height: 40px;
+  padding: 0em 1em;
+  border-radius: 5px;
+  font-weight: 400;
+}
+
+.UserForm__Item:focus {
+  border: 1px solid rgba(255, 255, 255, 0.404);
+  outline: none;
+}
+
+.UserForm__Item::placeholder {
+  color: hsl(231, 100%, 99%);
+  font-weight: 500;
+}
+
+.UserForm__ItemError {
+  font-weight: 400;
+  font-style: italic;
+  color: hsl(354, 84%, 57%);
+  font-size: 15px;
+  display: block;
+  margin-top: 3px;
+  padding-left: 1em;
+}
+
+.UserForm__ItemErrorICON {
+  position: absolute;
+  color: hsl(354, 84%, 57%);
+  top: 11.5px;
+  right: 10px;
+  animation: beat 0.5s ease infinite;
+}
+
+.UserForm__PassItemICON {
+
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f2937;
+  cursor: pointer;
+}
+
+.UserForm__ErrorStateITEM {
+  border: 1px solid hsl(354, 84%, 57%) !important;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.UserForm__ButtonBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60px;
+  margin: 10px auto;
+
+}
+
+.UserForm__ItemButton {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.644);
+  padding: 0.4em;
+  width: 140px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+.UserForm__ItemButton:hover {
+  border: none;
+  cursor: pointer;
+  background-color: #1f2937;
+}
+
+.UserForm__ItemButton:nth-child(1) {
+  background-color: #1f2937;
+  border: none;
+}
+
+.UserForm__ItemButton:nth-child(1):hover {
+  border: 1px solid rgba(255, 255, 255, 0.726);
+  background-color: transparent;
+}
+
+.UserForm__forgotLINK {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(110, 79, 248);
+  letter-spacing: 2px;
+}
+
+.UserForm__itemLINKBox {
+  margin: 20px auto;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UserForm__itemLINK {
+  margin-left: 10px;
+  text-decoration: none;
+  color: rgb(110, 79, 248);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.UserForm__forgotLINK:hover,
+.UserForm__itemLINK:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
