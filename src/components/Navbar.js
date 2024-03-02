@@ -1,18 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { UserLoggedOut } from "../Redux/ReduxSlice";
 function Navbar() {
   const dispatch = useDispatch();
   const { IsActive } = useSelector((state) => state.BlogApp);
-  const navigateTO = useNavigate();
-  const handleLoginNavigateClick = (e) => {
-    navigateTO("/user/Log-In");
+
+  const handleHamMenuClick = (e) => {
+    const navbar = document.querySelector(".App_navbar");
+    const hamMenu = document.querySelector('.appHeader__HamMenu')
+    navbar.classList.toggle("mobileNavbar");
+    hamMenu.classList.toggle("fa-xmark")
   };
+
   return (
     <div className="AppNavbar__Container">
-      <nav className="App_navbar">
+      <nav className="App_navbar mobileNavbar">
         <NavLink to="/" className="AppNavbar__Item">
           Home
         </NavLink>
@@ -21,18 +25,9 @@ function Navbar() {
         </NavLink>
       </nav>
 
-      {!IsActive && (
-        <button
-          className="AppNavbar__button"
-          onClick={handleLoginNavigateClick}
-        >
-          Log in
-        </button>
-      )}
-
       {IsActive && (
         <div className="DropDownMenu_Container">
-          <span className="CurrentUserName__FLetter">U</span>
+          <i className="fa-solid fa-user-secret CurrentUser_ICON"></i>
           <div className="dropDownMENU">
             <Link className="dropDownMENU__Item" to={"/user/dashboard"}>
               Dashboard{" "}
@@ -48,7 +43,10 @@ function Navbar() {
           </div>
         </div>
       )}
-      <i className="fa-solid fa-bars appHeader__HamMenu"></i>
+      <i
+        className="fa-solid fa-bars appHeader__HamMenu"
+        onClick={handleHamMenuClick}
+      ></i>
     </div>
   );
 }
