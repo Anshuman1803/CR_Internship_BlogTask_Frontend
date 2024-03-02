@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
+import valiDateEmails from "../helpers/ValidateEmail";
+import valiDatePassword from "../helpers/ValidatePassword";
 function LogInPage({ CBFun }) {
   const [ShowPassword, setShowPassword] = useState(false);
   const [isLoading, SetLoading] = useState(false);
@@ -52,21 +54,18 @@ function LogInPage({ CBFun }) {
 
   const handleLogInClick = (e) => {
     e.preventDefault();
-    if (
-      userDetails.userEmail === "" ||
-      !userDetails.userEmail.includes("@gmail.com")
-    ) {
+    if (!valiDateEmails(userDetails.userEmail)) {
       SetError({
         emailError: true,
         passwordError: false,
         errorMsg: "Invalid email address",
       });
       emailRef.current.focus();
-    } else if (userDetails.userPassword === "") {
+    } else if (!valiDatePassword(userDetails.userPassword)) {
       SetError({
         emailError: false,
         passwordError: true,
-        errorMsg: "Password required",
+        errorMsg: "Minimun 8 characters required",
       });
       passRef.current.focus();
     } else {

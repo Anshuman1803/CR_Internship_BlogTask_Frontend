@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SignUpPage from "./SignUpPage";
 import LogInPage from "./LogInPage";
-
 function FormContainer() {
     const [ShowSignUP, SetSignUp] = useState(false);
     const handleSetSignUp = (e)=>{

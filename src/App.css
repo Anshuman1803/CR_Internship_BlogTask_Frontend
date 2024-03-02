@@ -34,8 +34,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.151);
+  background-color: rgba(0, 0, 0, 0.336);
   border-radius: 10px;
+  z-index: 3;
 }
 
 .lds-default {
@@ -49,7 +50,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background: orange;
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
@@ -348,12 +349,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .UserForm {
   background-color: rgb(17, 24, 39);
   width: 450px;
-  height: 550px;
+  height: 575px;
   border-radius: 10px;
   position: relative;
 }
@@ -511,4 +513,10 @@
 .UserForm__itemLINK:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 451px) {
+  .UserForm{
+    width: 95%;
+  }
 }
