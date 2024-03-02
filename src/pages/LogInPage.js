@@ -5,9 +5,12 @@ import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 import valiDateEmails from "../helpers/ValidateEmail";
 import valiDatePassword from "../helpers/ValidatePassword";
+import { useDispatch } from "react-redux";
+import { UserLoggedIn } from "../Redux/ReduxSlice";
 function LogInPage({ CBFun }) {
   const [ShowPassword, setShowPassword] = useState(false);
   const [isLoading, SetLoading] = useState(false);
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passRef = useRef();
   const [error, SetError] = useState({
@@ -75,6 +78,10 @@ function LogInPage({ CBFun }) {
         .then((response) => {
           if (response.data.resMsg === "User Logged In Successfully") {
             toast.success("Logged In Successfully");
+            dispatch(UserLoggedIn({
+              currentUser: response.data.currentUser[0],
+              isActive : true
+            }));
             SetLoading(false);
             clearFields();
           } else if (response.data.resMsg === "Password is not Correct") {

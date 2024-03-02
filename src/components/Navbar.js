@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { UserLoggedOut } from "../Redux/ReduxSlice";
 function Navbar() {
+  const dispatch = useDispatch();
   const { IsActive } = useSelector((state) => state.BlogApp);
   const navigateTO = useNavigate();
   const handleLoginNavigateClick = (e) => {
@@ -36,8 +38,11 @@ function Navbar() {
               Dashboard{" "}
               <i className="fa-solid fa-user-tie dropDownMENUItem__ICON"></i>
             </Link>
-            <button className="dropDownMENU__Item">
-              Log out{" "}
+            <button
+              className="dropDownMENU__Item"
+              onClick={() => dispatch(UserLoggedOut(false))}
+            >
+              Log out
               <i className="fa-solid fa-right-from-bracket dropDownMENUItem__ICON"></i>
             </button>
           </div>

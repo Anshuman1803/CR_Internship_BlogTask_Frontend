@@ -1,16 +1,23 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 const ReduxSlice = createSlice({
-    name : 'ReduxSlice',
-    initialState : {
-        IsActive : false,
-
+  name: "ReduxSlice",
+  initialState: {
+    currentUser: localStorage.getItem("user")
+      ? localStorage.getItem("user")
+      : [],
+    IsActive: localStorage.getItem("user") ? true : false,
+  },
+  reducers: {
+    UserLoggedIn(state, action) {
+      state.IsActive = action.payload.isActive;
+      state.currentUser = action.payload.currentUser;
+      localStorage.setItem("user", state.currentUser._id);
     },
-    reducers : {
-        UserLoggedIn (state, actions){
-
-        }
-
-    }
+    UserLoggedOut(state, action) {
+      state.IsActive = action.payload;
+      localStorage.removeItem("user");
+    },
+  },
 });
-export const  {UserLoggedIn} = ReduxSlice.actions;
-export default ReduxSlice.reducer
+export const { UserLoggedIn, UserLoggedOut } = ReduxSlice.actions;
+export default ReduxSlice.reducer;
