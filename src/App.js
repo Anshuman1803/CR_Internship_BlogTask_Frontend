@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader";
 
+
 const FormContainer = lazy(() => import("./pages/FormContainer"));
 const AppRouter = lazy(() => import("./Router/AppRouter"));
 function App() {

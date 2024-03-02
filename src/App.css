@@ -279,7 +279,7 @@
   cursor: pointer;
 }
 
-.CurrentUser_ICON {
+.CurrentUserName__FLetter {
   background-color: #1f2937;
   color: orange;
   border-radius: 50%;
@@ -290,6 +290,7 @@
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  font-weight: 700;
 }
 
 .dropDownMENU {
@@ -515,6 +516,123 @@
   text-decoration: underline;
 }
 
+/* User Dashboard Container */
+.dashboardContainer {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Dashboard__sidebar {
+  width: 250px;
+  position: relative;
+  left: 0;
+  background-color: #1f2937;
+  height: 100%;
+}
+
+.Dashboardsidebar__LogoContainer {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.267);
+  height: 150px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.Dashboardsidebar__Logo {
+  width: 90px;
+  margin: auto;
+}
+
+.DashboardSidebar_links {
+  width: 100%;
+  padding-left: 0.6em;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+}
+
+.DashboardSidebar_links.active {
+  background-color: rgb(17, 24, 39);
+}
+.DashboardSidebar_links.active::before {
+  border: none;
+}
+
+.DashboardSidebar_links::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.185);
+
+}
+
+.DashboardSidebar_links:hover {
+  cursor: pointer;
+  background-color: rgb(17, 24, 39);
+}
+
+.DashboardSidebar_links:hover::before {
+  border: none;
+}
+.DashboardSidebar__button{
+  position: absolute;
+  bottom: 20px;
+  border-radius: 50px;
+  border: none;
+  display: block;
+  width: 100%;
+  background-color: rgb(17, 24, 39);
+  font-size: 18px;
+  padding: 0.6em;
+  outline: 1px solid rgba(255, 255, 255, 0.281);
+}
+.DashboardSidebar__button:hover{
+  cursor: pointer;
+  outline: none;
+}
+.Dashboard__outletContainer {
+  /* border: 2px solid red; */
+  height: 100%;
+  width: calc(100% - 250px);
+}
+
+.Dashboard_outletContainer__heading {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.384);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6em;
+  font-weight: 500;
+  font-size: 22px;
+}
+.Dashboard__greetingMSG{
+  font: 20px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+/* Footer */
+
+.appFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  background-color: transparent;
+  ;
+  min-height: 90px;
+  background-color: #1f2937;
+}
+
 @media screen and (max-width: 499px) {
   .appHeader__HamMenu {
     display: flex;
@@ -532,11 +650,12 @@
     top: 100%;
     left: 0;
   }
+
   .dropDownMENU {
     background-color: rgb(17, 24, 39);
-  z-index: 2;
+    z-index: 2;
   }
-  
+
 }
 
 @media screen and (max-width: 451px) {

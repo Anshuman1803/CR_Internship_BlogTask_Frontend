@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
@@ -8,6 +8,7 @@ import valiDatePassword from "../helpers/ValidatePassword";
 import { useDispatch } from "react-redux";
 import { UserLoggedIn } from "../Redux/ReduxSlice";
 function LogInPage({ CBFun }) {
+  const navigateTO = useNavigate();
   const [ShowPassword, setShowPassword] = useState(false);
   const [isLoading, SetLoading] = useState(false);
   const dispatch = useDispatch();
@@ -83,6 +84,7 @@ function LogInPage({ CBFun }) {
               isActive : true
             }));
             SetLoading(false);
+            navigateTO("/")
             clearFields();
           } else if (response.data.resMsg === "Password is not Correct") {
             toast.error("Password is not Correct");

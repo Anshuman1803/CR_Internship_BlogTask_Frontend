@@ -3,7 +3,7 @@ const ReduxSlice = createSlice({
   name: "ReduxSlice",
   initialState: {
     currentUser: localStorage.getItem("user")
-      ? localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
       : [],
     IsActive: localStorage.getItem("user") ? true : false,
   },
@@ -11,7 +11,10 @@ const ReduxSlice = createSlice({
     UserLoggedIn(state, action) {
       state.IsActive = action.payload.isActive;
       state.currentUser = action.payload.currentUser;
-      localStorage.setItem("user", state.currentUser._id);
+      localStorage.setItem("user", JSON.stringify({
+        user : state.currentUser.userName,
+        _id : state.currentUser._id
+      }));
     },
     UserLoggedOut(state, action) {
       state.IsActive = action.payload;

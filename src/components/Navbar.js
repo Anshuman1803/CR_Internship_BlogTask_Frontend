@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { UserLoggedOut } from "../Redux/ReduxSlice";
 function Navbar() {
   const dispatch = useDispatch();
-  const { IsActive } = useSelector((state) => state.BlogApp);
+  const { IsActive, currentUser } = useSelector((state) => state.BlogApp);
 
   const handleHamMenuClick = (e) => {
     const navbar = document.querySelector(".App_navbar");
@@ -27,7 +27,7 @@ function Navbar() {
 
       {IsActive && (
         <div className="DropDownMenu_Container">
-          <i className="fa-solid fa-user-secret CurrentUser_ICON"></i>
+          <span className="CurrentUserName__FLetter">{currentUser.user[0]}</span>
           <div className="dropDownMENU">
             <Link className="dropDownMENU__Item" to={"/user/dashboard"}>
               Dashboard{" "}
