@@ -42,7 +42,7 @@ function DashboardContainer() {
           className="DashboardSidebar_links"
         >
           {" "}
-          Blog
+          Create blog
         </NavLink>
 
         <NavLink

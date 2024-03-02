@@ -2,9 +2,9 @@ import React from 'react'
 
 function CreateBlog() {
   return (
-    <div>
+    <section className="Dashboard__section">
       Here we can create blogs
-    </div>
+    </section>
   )
 }
 

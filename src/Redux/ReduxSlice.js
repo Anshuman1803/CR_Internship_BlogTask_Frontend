@@ -10,11 +10,11 @@ const ReduxSlice = createSlice({
   reducers: {
     UserLoggedIn(state, action) {
       state.IsActive = action.payload.isActive;
-      state.currentUser = action.payload.currentUser;
-      localStorage.setItem("user", JSON.stringify({
-        user : state.currentUser.userName,
-        _id : state.currentUser._id
-      }));
+      state.currentUser = {
+        user: action.payload.currentUser.userName,
+        _id: action.payload.currentUser._id,
+      };
+      localStorage.setItem("user", JSON.stringify(state.currentUser));
     },
     UserLoggedOut(state, action) {
       state.IsActive = action.payload;

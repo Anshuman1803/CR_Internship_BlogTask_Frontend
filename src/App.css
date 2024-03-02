@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;&display=swap');
 
 /* font-weight: 400, 500, 700, 900; */
 
@@ -6,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: white;
   user-select: none;
 }
@@ -199,10 +200,6 @@
   width: 70px;
 }
 
-.appSection {
-  min-height: 100vh;
-}
-
 .Header__LOGOContainer:hover .Header_appLOGO {
   animation: none;
 }
@@ -338,6 +335,73 @@
 
 .DropDownMenu_Container:hover .dropDownMENU {
   display: block;
+}
+
+/* appSection__homePage */
+.appSection {
+  min-height: calc(100vh - 90px);
+}
+
+.appSection__homePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.homePage__PrimaryHeading {
+  font-weight: 600;
+  color: #fff;
+  font-size: 60px;
+}
+
+.PrimaryHeading__appName {
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px orange;
+}
+
+.homePage__SecondaryHeading {
+  font-size: 45px;
+  font-style: italic;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+}
+
+.homePage__buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  min-height: 80px;
+}
+
+.homePage__buttons {
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0.6em;
+  color: rgb(17, 24, 39);
+  transition: all 0.3s ease-in-out;
+}
+
+.homePage__buttons:nth-child(1) {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.homePage__buttons:hover {
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: #1f2937;
 }
 
 /* User FormContainer */
@@ -564,6 +628,7 @@
 .DashboardSidebar_links.active {
   background-color: rgb(17, 24, 39);
 }
+
 .DashboardSidebar_links.active::before {
   border: none;
 }
@@ -587,7 +652,8 @@
 .DashboardSidebar_links:hover::before {
   border: none;
 }
-.DashboardSidebar__button{
+
+.DashboardSidebar__button {
   position: absolute;
   bottom: 20px;
   border-radius: 50px;
@@ -599,10 +665,12 @@
   padding: 0.6em;
   outline: 1px solid rgba(255, 255, 255, 0.281);
 }
-.DashboardSidebar__button:hover{
+
+.DashboardSidebar__button:hover {
   cursor: pointer;
   outline: none;
 }
+
 .Dashboard__outletContainer {
   /* border: 2px solid red; */
   height: 100%;
@@ -618,18 +686,56 @@
   font-weight: 500;
   font-size: 22px;
 }
-.Dashboard__greetingMSG{
+
+.Dashboard__greetingMSG {
   font: 20px;
   font-weight: 400;
   margin-right: 10px;
+}
+
+/* Dashboard__section */
+
+.Dashboard__section {
+  height: calc(100% - 55px);
+}
+.DashboardSection__profile{
+
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+
+}
+
+.ProfileSection__cards{
+  border: 2px solid white;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.ProfileSectionCards__title{
+  font-size: 22px;
+  font-weight: 700;
+
+
+}
+.ProfileSectionCards__Number{
+font-size: 18px;
+font-weight: 400;
+color: orange;
 }
 /* Footer */
 
 .appFooter {
   border-top: 1px solid rgba(255, 255, 255, 0.26);
   background-color: transparent;
-  ;
-  min-height: 90px;
+  min-height: 70px;
   background-color: #1f2937;
 }
 

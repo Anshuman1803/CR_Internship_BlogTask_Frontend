@@ -2,9 +2,9 @@ import React from 'react'
 
 function UpdateBlog() {
   return (
-    <div>
+    <section className='Dashboard__section'>
       Here we can update our blogs
-    </div>
+    </section>
   )
 }
 
