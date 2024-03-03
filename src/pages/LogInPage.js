@@ -75,7 +75,7 @@ function LogInPage({ CBFun }) {
     } else {
       SetLoading(true);
       axios
-        .post("/user/login", userDetails)
+        .post("https://cr-internship-blogtask-backend.onrender.com/api/user/login", userDetails)
         .then((response) => {
           if (response.data.resMsg === "User Logged In Successfully") {
             toast.success("Logged In Successfully");

@@ -697,8 +697,8 @@
 
 .Dashboard__section {
   height: calc(100% - 55px);
+  position: relative;
 }
-
 .DashboardSection__profile {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));

@@ -108,7 +108,7 @@ function SignUpPage({ CBFun }) {
     } else {
       SetLoading(true);
       axios
-        .post("/user/register", userDetails)
+        .post("https://cr-internship-blogtask-backend.onrender.com/api/user/register", userDetails)
         .then((response) => {
           SetLoading(false);
           if (response.data.resMsg === "User Already Exists") {
