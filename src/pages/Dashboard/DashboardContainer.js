@@ -33,31 +33,26 @@ function DashboardContainer() {
           to={`/user/dashboard/profile`}
           className="DashboardSidebar_links"
         >
-          {" "}
           Profile
+        </NavLink>
+        <NavLink
+          to={`/user/dashboard/my-blogs`}
+          className="DashboardSidebar_links"
+        >
+          My blogs
         </NavLink>
 
         <NavLink
           to={`/user/dashboard/create-blog`}
           className="DashboardSidebar_links"
         >
-          {" "}
           Create blog
-        </NavLink>
-
-        <NavLink
-          to={`/user/dashboard/update-blog`}
-          className="DashboardSidebar_links"
-        >
-          {" "}
-          Update blog
         </NavLink>
 
         <NavLink
           to={`/user/dashboard/update-password`}
           className="DashboardSidebar_links"
         >
-          {" "}
           Update password
         </NavLink>
 
@@ -70,7 +65,10 @@ function DashboardContainer() {
       </aside>
       <div className="Dashboard__outletContainer">
         <h1 className="Dashboard_outletContainer__heading">
-          <span className="Dashboard__greetingMSG">{GenerategreetingMsg()}</span>{currentUser.user.split(" ")[0]}
+          <span className="Dashboard__greetingMSG">
+            {GenerategreetingMsg()}
+          </span>
+          {currentUser.user.split(" ")[0]}
         </h1>
         <Outlet />
       </div>

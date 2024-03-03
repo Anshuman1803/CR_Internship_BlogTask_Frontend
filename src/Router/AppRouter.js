@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "../components/Loader";
+import MyBlog from "../pages/Dashboard/MyBlog";
 
 const HomePage = lazy(() => import("../pages/HomePage"));
 const BlogPage = lazy(() => import("../pages/BlogPage"));
@@ -72,6 +73,15 @@ function AppRouter() {
             </Suspense>
           }
         />
+        <Route
+          path={`/user/dashboard/my-blogs`}
+          element={
+            <Suspense fallback={<Loader />}>
+              <MyBlog/>
+            </Suspense>
+          }
+        />
+
       </Route>
     </Routes>
   );

@@ -108,7 +108,7 @@ function SignUpPage({ CBFun }) {
     } else {
       SetLoading(true);
       axios
-        .post("http://localhost:5000/api/user/register", userDetails)
+        .post("/user/register", userDetails)
         .then((response) => {
           SetLoading(false);
           if (response.data.resMsg === "User Already Exists") {

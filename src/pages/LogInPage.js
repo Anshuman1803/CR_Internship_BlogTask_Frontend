@@ -75,7 +75,7 @@ function LogInPage({ CBFun }) {
     } else {
       SetLoading(true);
       axios
-        .post("http://localhost:5000/api/user/login", userDetails)
+        .post("/user/login", userDetails)
         .then((response) => {
           if (response.data.resMsg === "User Logged In Successfully") {
             toast.success("Logged In Successfully");
