@@ -685,6 +685,7 @@
   padding: 0.6em;
   font-weight: 500;
   font-size: 22px;
+  position: relative;
 }
 
 .Dashboard__greetingMSG {
@@ -693,12 +694,28 @@
   margin-right: 10px;
 }
 
+.Dashboard__hamMENU {
+  border-radius: 50%;
+  background-color: #1f2937;
+  position: absolute;
+  right: 10px;
+  height: 40px;
+  width: 40px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: none;
+}
+
 /* Dashboard__section */
 
 .Dashboard__section {
   height: calc(100% - 55px);
   position: relative;
 }
+
 .DashboardSection__profile {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
@@ -761,7 +778,9 @@
   justify-content: flex-start;
   gap: 10px;
   padding-left: 1em;
+  position: relative;
 }
+
 
 .MyBlogsCard__AuthorProfile {
   background-color: rgb(17, 24, 39);
@@ -797,6 +816,83 @@
   font-size: 14px;
 }
 
+.MyBlogsCard__OptionsContainer {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  display: flex;
+  cursor: pointer;
+}
+
+.MyBlogsCard__OptionsICON {
+  margin: auto;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.MyBlogsCard__OptionsContainer:hover .MyBlogsCard__OptionsICON {
+  border-radius: 50%;
+  background-color: rgb(17, 24, 39);
+}
+
+.MyBlogsCard__OptionsDropDown {
+  border: 1px solid rgba(255, 255, 255, 0.225);
+  position: absolute;
+  background-color: rgb(17, 24, 39);
+  top: 100%;
+  right: -10px;
+  height: 120px;
+  width: 250px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  list-style: none;
+  display: none;
+  z-index: 2;
+}
+
+.MyBlogsCard__Option {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.MyBlogsCard__Option:nth-child(3) {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.MyBlogsCard__OptionLINKS {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  padding: 0em 1em;
+  font-size: 17px;
+}
+
+.MyBlogsCard__OptionICON {
+  font-size: 14px;
+  color: orange;
+}
+
+.MyBlogsCard__Option:hover {
+  cursor: pointer;
+  background-color: #1f2937;
+}
+
+.MyBlogsCard__OptionsContainer:hover .MyBlogsCard__OptionsDropDown {
+  display: block;
+
+}
+
 .MyBlogsCards__posterContainer {
   height: 280px;
   overflow: hidden;
@@ -807,7 +903,6 @@
   height: 100%;
   object-fit: auto;
   transition: all 0.6s ease-in-out;
-
 }
 
 .MyBlogsCards__detailsContainer {
@@ -839,6 +934,7 @@
 
 .Myblogs__Cards:hover .MyBlogsCards__Poster {
   transform: scale(1.1);
+  z-index: 1;
 }
 
 /* Footer */
@@ -848,6 +944,56 @@
   background-color: transparent;
   min-height: 70px;
   background-color: #1f2937;
+}
+
+@media screen and (max-width: 851px) {
+  .Dashboard__hamMENU {
+    display: flex;
+    z-index: 4;
+  }
+
+  .Dashboard__outletContainer {
+    width: 100%;
+  }
+
+  .DashboardMobile__Sidebar {
+    display: none;
+  }
+
+  .Dashboard__sidebar {
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    width: 320px;
+    animation: slideINSidebar 0.5s ease-in-out;
+  }
+
+  @keyframes slideINSidebar {
+    from {
+      left: -400px;
+    }
+
+    to {
+      left: 0;
+    }
+
+  }
+
+  .Dashboard_outletContainer__heading {
+    justify-content: flex-start;
+    font-size: 20px;
+  }
+
+  .Dashboard__greetingMSG {
+    font: 18px;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .DashboardSection__myBlogs {
+    grid-template-columns: repeat(1, 95%);
+  }
 }
 
 @media screen and (max-width: 499px) {
@@ -878,5 +1024,9 @@
 @media screen and (max-width: 451px) {
   .UserForm {
     width: 95%;
+  }
+
+  .Dashboard__sidebar {
+    width: 100%;
   }
 }
