@@ -95,7 +95,7 @@ function CreateBlog() {
     } else {
       setLoading(true);
       axios
-        .post("http://localhost:5000/api/blog/create-blog", blogDetails)
+        .post("https://cr-internship-blogtask-backend.onrender.com/api/blog/create-blog", blogDetails)
         .then((response) => {
           if (response.data.msg === "Blog creation successfull") {
             toast.success("Successfully created");

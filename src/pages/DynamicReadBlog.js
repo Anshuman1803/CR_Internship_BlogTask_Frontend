@@ -9,7 +9,7 @@ function DynamicReadBlog() {
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:5000/api/blogs/${id}`).then((response) => {
+    axios.get(`https://cr-internship-blogtask-backend.onrender.com/api/blogs/${id}`).then((response) => {
       Setblog(response.data);
       setLoading(false)
     });

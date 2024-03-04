@@ -9,7 +9,7 @@ function MyBlog() {
   const [myBlogs, setblogs] = useState([])
   useEffect(() => {
     setLoading(true)
-    axios.get(`http://localhost:5000/api/user//blog/${currentUser.userEmail}`).then((response)=>{
+    axios.get(`https://cr-internship-blogtask-backend.onrender.com/api/user//blog/${currentUser.userEmail}`).then((response)=>{
       setblogs(response.data)
       setLoading(false)
     })
