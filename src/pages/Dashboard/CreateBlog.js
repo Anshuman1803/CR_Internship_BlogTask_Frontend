@@ -12,7 +12,7 @@ function CreateBlog() {
   const posterRef = useRef();
   const categoryRef = useRef();
   const [summary, setsummary] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   const [blogDetails, SetblogDetails] = useState({
     blogPoster: "",
