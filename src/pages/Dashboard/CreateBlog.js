@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import modules from "../../utils/EditiorModule";
 import axios from "axios";
+import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 function CreateBlog() {
@@ -11,6 +12,7 @@ function CreateBlog() {
   const posterRef = useRef();
   const categoryRef = useRef();
   const [summary, setsummary] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   const [blogDetails, SetblogDetails] = useState({
     blogPoster: "",
@@ -91,7 +93,7 @@ function CreateBlog() {
         summaryError: true,
       });
     } else {
-      console.log(blogDetails);
+      setLoading(true);
       axios
         .post("http://localhost:5000/api/blog/create-blog", blogDetails)
         .then((response) => {
@@ -99,10 +101,12 @@ function CreateBlog() {
             toast.success("Successfully created");
             clearFields();
             titleRef.current.focus();
+            setLoading(false);
           } else {
             toast.error("something went wrong! try Again");
             clearFields();
             titleRef.current.focus();
+            setLoading(false);
           }
         });
     }
@@ -113,6 +117,7 @@ function CreateBlog() {
   }, []);
   return (
     <section className="Dashboard__section DashboardSection__createBlog">
+      {isLoading && <Loader />}
       <form className="CreateBlogPost__form" onSubmit={handlePublishBlog}>
         <div className="BlogPost__formITemBox">
           <label htmlFor="title">Blog title</label>

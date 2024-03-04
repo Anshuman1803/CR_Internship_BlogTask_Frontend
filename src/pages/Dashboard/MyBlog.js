@@ -33,7 +33,7 @@ function MyBlog() {
                 <i className="fa-solid fa-ellipsis MyBlogsCard__OptionsICON"></i>
                 <ul className="MyBlogsCard__OptionsDropDown">
                   <li className="MyBlogsCard__Option">
-                    <Link to="" className="MyBlogsCard__OptionLINKS">
+                    <Link to={`/blogs/blog/${blog._id}`} className="MyBlogsCard__OptionLINKS">
                       Read blog{" "}
                       <i className="fa-brands fa-readme MyBlogsCard__OptionICON"></i>
                     </Link>

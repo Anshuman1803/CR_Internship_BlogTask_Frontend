@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "../components/Loader";
 import MyBlog from "../pages/Dashboard/MyBlog";
+import DynamicReadBlog from "../pages/DynamicReadBlog";
 
 const HomePage = lazy(() => import("../pages/HomePage"));
 const BlogPage = lazy(() => import("../pages/BlogPage"));
@@ -32,6 +33,16 @@ function AppRouter() {
           </Suspense>
         }
       />
+
+      <Route
+        path="/blogs/blog/:id"
+        element={
+          <Suspense fallback={<Loader />}>
+            <DynamicReadBlog />
+          </Suspense>
+        }
+      />
+
 
       <Route
         path={`/user/dashboard`}
@@ -83,6 +94,7 @@ function AppRouter() {
         />
 
       </Route>
+
     </Routes>
   );
 }
