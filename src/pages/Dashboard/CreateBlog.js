@@ -12,7 +12,7 @@ function CreateBlog() {
   const posterRef = useRef();
   const categoryRef = useRef();
   const [summary, setsummary] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const [blogDetails, SetblogDetails] = useState({
     blogPoster: "",
@@ -57,6 +57,7 @@ function CreateBlog() {
 
     blogDetails.blogDesc = summary;
     blogDetails.blogAuthor = currentUser.userEmail;
+    blogDetails.authorName = currentUser.user;
     blogDetails.blogDate = Date.now();
     SetblogDetails(blogDetails);
 

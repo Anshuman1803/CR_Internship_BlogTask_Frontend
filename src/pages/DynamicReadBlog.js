@@ -20,6 +20,11 @@ function DynamicReadBlog() {
       <section className="appSection AppSection__readBlogs">
         {isLoading ? <Loader /> :<>
         <h1 className="readBlogs__title">{blogData?.blogTitle}</h1>
+        <div className="readBlogs__blogInfoContainer">
+          <span className="readBlogs__authorName">{blogData?.authorName.split(" ")[0]}</span>
+          <span className="readBlogs__category">{blogData?.blogCategory}</span>
+          <span className="readBlogs__createdAt">{Date(blogData?.blogDate).split(" ").slice(1, 4).join(" ")}</span>
+        </div>
         <div className="readBlogs__posterContainer" >
         <img src={blogData?.blogPoster} alt={"Blog Poster"}  className="readBlogs__poster"/>
         </div>
