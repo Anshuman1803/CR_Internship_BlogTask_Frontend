@@ -12,6 +12,7 @@ const ReduxSlice = createSlice({
       state.IsActive = action.payload.isActive;
       state.currentUser = {
         user: action.payload.currentUser.userName,
+        userEmail : action.payload.currentUser.userEmail,
         _id: action.payload.currentUser._id,
       };
       localStorage.setItem("user", JSON.stringify(state.currentUser));

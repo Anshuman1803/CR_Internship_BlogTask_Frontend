@@ -1,7 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;&display=swap');
-
-/* font-weight: 400, 500, 700, 900; */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap');
 
 * {
   margin: 0;
@@ -772,7 +769,7 @@
 .DashboardSection__myBlogs {
   overflow: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(537px, 537px));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 500px));
   justify-content: center;
   gap: 20px;
   padding: 1em 0em;
@@ -983,18 +980,22 @@
   justify-content: center;
   gap: 10px;
   padding: 0em 1em;
+  position: relative;
 }
 
-.BlogPostForm__item {
-  height: fit-content;
-  padding: 1em;
-  cursor: pointer;
-
+.BlogPost__requireError {
+  position: absolute;
+  top: 10px;
+  right: 22px;
+  font-weight: 700;
+  color: hsl(354, 84%, 57%);
+  font-style: italic;
+  font-size: 15px;
 }
-
-.CreateBlogPost__editor {
+.BlogPost__editiorContainer{
+  width: 95%;
+  position: relative;
   margin: 10px auto;
-  width: 95%
 }
 
 .CreateBlogPost__editor .ql-toolbar {
