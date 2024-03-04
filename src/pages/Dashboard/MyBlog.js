@@ -25,7 +25,7 @@ function MyBlog() {
 
   const handleDeleteBlogClick = (id) => {
     axios
-      .post(`http://localhost:5000/api/blog/delete-blog/${id}`)
+      .post(`https://cr-internship-blogtask-backend.onrender.com/api/blog/delete-blog/${id}`)
       .then((response) => {
         console.log(response.data);
         if (response.data.msg === "Blog deleted successfull") {
