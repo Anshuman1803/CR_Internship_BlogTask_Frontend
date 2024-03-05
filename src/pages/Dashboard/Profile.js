@@ -8,9 +8,9 @@ function Profile() {
   const navigateTO = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [userDetails, setUser] = useState(null);
-  const [totalLikes, setLikes] = useState(0);
-  const [totalPosts, setPosts] = useState(0);
-  const [totalComments, setCommetns] = useState(0);
+  const [totalLikes] = useState(0);
+  const [totalPosts] = useState(0);
+  const [totalComments] = useState(0);
 
   useEffect(() => {
     // axios
