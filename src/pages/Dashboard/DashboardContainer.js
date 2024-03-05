@@ -70,7 +70,7 @@ function DashboardContainer() {
         >
           Update password
         </NavLink>
-
+        
         <button
           className="DashboardSidebar__button"
           onClick={() => dispatch(UserLoggedOut(false))}
