@@ -7,9 +7,11 @@ import valiDateEmails from "../helpers/ValidateEmail";
 import valiDatePassword from "../helpers/ValidatePassword";
 import { useDispatch } from "react-redux";
 import { UserLoggedIn } from "../Redux/ReduxSlice";
+import ForgotPassword from "../components/ForgotPassword";
 function LogInPage({ CBFun }) {
   const navigateTO = useNavigate();
   const [ShowPassword, setShowPassword] = useState(false);
+  const [ShowForgotPassword, setForgotPassword] = useState(false);
   const [isLoading, SetLoading] = useState(false);
   const dispatch = useDispatch();
   const emailRef = useRef();
@@ -75,16 +77,21 @@ function LogInPage({ CBFun }) {
     } else {
       SetLoading(true);
       axios
-        .post("https://cr-internship-blogtask-backend.onrender.com/api/user/login", userDetails)
+        .post(
+          "https://cr-internship-blogtask-backend.onrender.com/api/user/login",
+          userDetails
+        )
         .then((response) => {
           if (response.data.resMsg === "User Logged In Successfully") {
             toast.success("Logged In Successfully");
-            dispatch(UserLoggedIn({
-              currentUser: response.data.currentUser[0],
-              isActive : true
-            }));
+            dispatch(
+              UserLoggedIn({
+                currentUser: response.data.currentUser[0],
+                isActive: true,
+              })
+            );
             SetLoading(false);
-            navigateTO("/")
+            navigateTO("/");
             clearFields();
           } else if (response.data.resMsg === "Password is not Correct") {
             toast.error("Password is not Correct");
@@ -98,6 +105,11 @@ function LogInPage({ CBFun }) {
           }
         });
     }
+  };
+
+  const handleForgotPasswordClick = (e) => {
+    e && e.preventDefault();
+    setForgotPassword(!ShowForgotPassword);
   };
 
   useEffect(() => {
@@ -159,7 +171,7 @@ function LogInPage({ CBFun }) {
           )}
         </div>
 
-        <p className="UserForm__forgotLINK">Forgot password?</p>
+        <p className="UserForm__forgotLINK" onClick={handleForgotPasswordClick}>Forgot password?</p>
         <div className="UserForm__ButtonBox">
           <button className="UserForm__ItemButton" onClick={handleClearClick}>
             Clear
@@ -178,6 +190,11 @@ function LogInPage({ CBFun }) {
 
         {isLoading && <Loader />}
       </form>
+      {ShowForgotPassword && (
+        <div className="forgotPasswodForm__container">
+          <ForgotPassword CBFun={handleForgotPasswordClick} />
+        </div>
+      )}
     </>
   );
 }
