@@ -4,7 +4,7 @@ import valiDateEmails from "../helpers/ValidateEmail";
 import valiDatePassword from "../helpers/ValidatePassword";
 import Loader from "./Loader";
 import axios from "axios";
-function ForgotPassword({ CBFun }) {
+function ForgotPassword({ CBFun, formTitle }) {
   const [ShowPassword, setShowPassword] = useState(false);
   const [isLoading, SetLoading] = useState(false);
   const emailRef = useRef();
@@ -94,7 +94,7 @@ function ForgotPassword({ CBFun }) {
 
   return (
     <form className="forgotPassword__form">
-      <h2 className="forgotPasswordform__heading">Update Your Password</h2>
+      <h2 className="forgotPasswordform__heading">{formTitle}</h2>
 
       <div className="UserForm__ItemBox">
         <input

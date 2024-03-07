@@ -11,7 +11,7 @@ function BlogPage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5000/api/blogposts/all").then((response) => {
+    axios.get("https://cr-internship-blogtask-backend.onrender.com/api/blogposts/all").then((response) => {
       setBlogs(response.data);
       setLoading(false);
     });

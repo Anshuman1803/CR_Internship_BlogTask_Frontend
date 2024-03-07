@@ -171,7 +171,9 @@ function LogInPage({ CBFun }) {
           )}
         </div>
 
-        <p className="UserForm__forgotLINK" onClick={handleForgotPasswordClick}>Forgot password?</p>
+        <p className="UserForm__forgotLINK" onClick={handleForgotPasswordClick}>
+          Forgot password?
+        </p>
         <div className="UserForm__ButtonBox">
           <button className="UserForm__ItemButton" onClick={handleClearClick}>
             Clear
@@ -192,7 +194,10 @@ function LogInPage({ CBFun }) {
       </form>
       {ShowForgotPassword && (
         <div className="forgotPasswodForm__container">
-          <ForgotPassword CBFun={handleForgotPasswordClick} />
+          <ForgotPassword
+            CBFun={handleForgotPasswordClick}
+            formTitle="Reset your password"
+          />
         </div>
       )}
     </>

@@ -11,7 +11,7 @@ function UpdatePassword() {
   }
   return (
     <section className='Dashboard__section DashboardSection__forgotPassword'>
-    <ForgotPassword CBFun={handleNavigateTo}/>
+    <ForgotPassword CBFun={handleNavigateTo} formTitle="Update your password"/>
     </section>
   )
 }
