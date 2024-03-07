@@ -62,6 +62,7 @@ function DynamicReadBlog() {
           if (response.data.message === "Comment added successfully") {
             toast.success("Comment added successfully");
             setNewComments("");
+            setCharacter(0)
             LoadComments();
           } else {
             toast.error("Something went wrong! Try again");
