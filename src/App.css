@@ -875,11 +875,12 @@
   margin: 30px auto;
   position: relative;
 }
-.commentSections__AllCommentsBox .loaderContainer{
+
+.commentSections__AllCommentsBox .loaderContainer {
   background-color: transparent;
 }
 
-.commentSections__NOcomment_MSG{
+.commentSections__NOcomment_MSG {
   color: white;
   font-size: 20px;
   text-align: center;
@@ -899,7 +900,9 @@
   border-radius: 10px;
   padding: 0.5em;
   position: relative;
+  word-wrap:normal;
 }
+
 .OldComments__userInformation {
   height: 70px;
   width: 100%;
@@ -939,8 +942,10 @@
   color: white;
   font-size: 17px;
   padding: 0.5em;
+  width: 100%;
   text-align: justify;
-
+word-break: break-all;
+width: 100%;
 }
 
 /* User Dashboard Container */
@@ -1042,6 +1047,7 @@
   color: white;
   height: 100%;
   width: calc(100% - 250px);
+  position: relative;
 }
 
 .Dashboard_outletContainer__heading {
@@ -1083,7 +1089,6 @@
 
 .Dashboard__section {
   height: calc(100% - 55px);
-  position: relative;
 }
 
 .DashboardSection__forgotPassword {
@@ -1291,7 +1296,6 @@
 }
 
 .MyBlogsCard__blogAuthorBox {
-  /* border: 2px solid red; */
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -1437,19 +1441,12 @@
 /* DashboardSection__createBlog */
 
 .DashboardSection__createBlog {
-  /* border: 2px solid red; */
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding: 1em 0em;
   overflow: auto;
   color: white;
-}
-
-.DashboardSection__createBlog .loaderContainer {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
 }
 
 .CreateBlogPost__form {
@@ -1594,6 +1591,13 @@
   background-color: #1f2937;
 }
 
+@media screen and (max-width: 1052px) {
+  .appSection__allBlogs {
+    justify-content: center;
+
+  }
+}
+
 @media screen and (max-width: 851px) {
   .Dashboard__hamMENU {
     display: flex;
@@ -1635,6 +1639,10 @@
   .Dashboard__greetingMSG {
     font: 18px;
     margin-right: 5px;
+  }
+
+  .appSection__allBlogs {
+    justify-content: center;
   }
 }
 
@@ -1697,6 +1705,16 @@
     width: 90%;
   }
 
+  .appSection__allBlogs {
+    padding: 1em 0em;
+    grid-template-columns: 95%;
+    justify-content: center;
+
+  }
+
+  .appSection__allBlogs .Myblogs__Cards .MYBlogsCards__title {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 499px) {

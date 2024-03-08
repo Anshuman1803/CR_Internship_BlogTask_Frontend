@@ -4,15 +4,14 @@ import Loader from "../components/Loader";
 import MyBlog from "../pages/Dashboard/MyBlog";
 import DynamicReadBlog from "../pages/DynamicReadBlog";
 
+import DashboardContainer from "../pages/Dashboard/DashboardContainer";
 const HomePage = lazy(() => import("../pages/HomePage"));
 const BlogPage = lazy(() => import("../pages/BlogPage"));
 const ProfilePage = lazy(() => import("../pages/Dashboard/Profile"));
 const CreateBlog = lazy(() => import("../pages/Dashboard/CreateBlog"));
 const UpdateBlog = lazy(() => import("../pages/Dashboard/UpdateBlog"));
 const UpdatePassword = lazy(() => import("../pages/Dashboard/UpdatePassword"));
-const DashboardContainer = lazy(() =>
-  import("../pages/Dashboard/DashboardContainer")
-);
+
 function AppRouter() {
   return (
     <Routes>
@@ -43,15 +42,7 @@ function AppRouter() {
         }
       />
 
-
-      <Route
-        path={`/user/dashboard`}
-        element={
-          <Suspense fallback={<Loader />}>
-            <DashboardContainer />
-          </Suspense>
-        }
-      >
+      <Route path={`/user/dashboard`} element={<DashboardContainer />}>
         <Route
           path={`/user/dashboard/profile`}
           element={
@@ -88,13 +79,11 @@ function AppRouter() {
           path={`/user/dashboard/my-blogs`}
           element={
             <Suspense fallback={<Loader />}>
-              <MyBlog/>
+              <MyBlog />
             </Suspense>
           }
         />
-
       </Route>
-
     </Routes>
   );
 }

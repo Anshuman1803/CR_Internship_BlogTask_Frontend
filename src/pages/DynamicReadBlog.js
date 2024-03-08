@@ -22,12 +22,14 @@ function DynamicReadBlog() {
   });
 
   const LoadComments = () => {
-    setLoadingComments(true)
+    setLoadingComments(true);
     axios
-      .get(`https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/${id}`)
+      .get(
+        `https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/${id}`
+      )
       .then((response) => {
         setblogComments(response.data);
-        setLoadingComments(false)
+        setLoadingComments(false);
       });
   };
 
@@ -39,13 +41,13 @@ function DynamicReadBlog() {
         commentError: true,
         errMsg: "Required*",
       });
-    } else if(newComments.length < 20){
+    } else if (newComments.length < 20) {
       commentInputRef.current.focus();
       setError({
         commentError: true,
         errMsg: "Comments should be more descriptive.",
       });
-    }else {
+    } else {
       const newCommentDetails = {
         blogID: blogData._id,
         authorName: currentUser.user,
@@ -62,12 +64,16 @@ function DynamicReadBlog() {
           if (response.data.message === "Comment added successfully") {
             toast.success("Comment added successfully");
             setNewComments("");
-            setCharacter(0)
+            setCharacter(0);
             LoadComments();
           } else {
-            toast.error("Something went wrong! Try again");
+            toast.error("Try again");
             setNewComments("");
           }
+        })
+        .catch((errors) => {
+          toast.error("Something went wrong! Try again");
+          setNewComments("");
         });
     }
   };
@@ -112,7 +118,9 @@ function DynamicReadBlog() {
         axios.get(
           `https://cr-internship-blogtask-backend.onrender.com/api/blogs/${id}`
         ),
-        axios.get(`https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/${id}`),
+        axios.get(
+          `https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/${id}`
+        ),
       ])
       .then(
         axios.spread((blogResponse, commentsResponse) => {
@@ -208,7 +216,7 @@ function DynamicReadBlog() {
                           return (
                             <div
                               className="AllCommentBox__oldComments"
-                              key={comments.id + index}
+                              key={comments._id}
                             >
                               <div className="OldComments__userInformation">
                                 <p className="OldComments__userICON">

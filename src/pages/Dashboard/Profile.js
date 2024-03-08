@@ -13,16 +13,6 @@ function Profile() {
   const [totalComments] = useState(0);
 
   useEffect(() => {
-    // axios
-    //   .get(`https://cr-internship-blogtask-backend.onrender.com/api/user/${currentUser._id}`)
-    //   .then((response) => {
-    //     setUser(response.data);
-    //     axios
-    //       .get(`https://cr-internship-blogtask-backend.onrender.com/api/user/blog/${response.data.userEmail}`)
-    //       .then((response2) => {
-    //         console.log(response2.data);
-    //       });
-    //   });
     setLoading(true);
     axios
       .all([
@@ -37,11 +27,9 @@ function Profile() {
         axios.spread((userResponse, blogResponse) => {
           setLoading(false);
           setUser(userResponse.data);
-          console.log(blogResponse.data);
         })
       )
       .catch((error) => {
-        // Handle error
         console.error("Error fetching data:", error);
       });
   }, [currentUser]);

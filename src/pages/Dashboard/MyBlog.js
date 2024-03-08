@@ -24,22 +24,28 @@ function MyBlog() {
   };
   useEffect(LoadBlog, [currentUser]);
 
+
   const handleDeleteBlogClick = (id) => {
+    setLoading(true);
     axios
       .post(
         `https://cr-internship-blogtask-backend.onrender.com/api/blog/delete-blog/${id}`
       )
       .then((response) => {
-        console.log(response.data);
         if (response.data.msg === "Blog deleted successfull") {
-          toast.success("Blog deleted successfully");
-          LoadBlog();
+          return axios.post(
+            `https://cr-internship-blogtask-backend.onrender.com/api/blog/delete-comments/${id}`
+          );
         } else {
-          toast.error("Try again");
+          throw new Error("Blog deletion failed");
         }
       })
+      .then(() => {
+        toast.success("Blog deleted successfully");
+        LoadBlog();
+      })
       .catch((err) => {
-        console.log("Something went wrong");
+        toast.error("Something went wrong! Try again");
       });
   };
   return (
@@ -49,7 +55,7 @@ function MyBlog() {
       ) : (
         <>
           {myBlogs.length === 0 ? (
-            <EmptyPosts message={"No Blog Posts Yet"}/>
+            <EmptyPosts message={"No Blog Posts Yet"} />
           ) : (
             <>
               {myBlogs?.map((blog) => {
