@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
+import defaultImg from "../Assets/DefaultBlogPost.png";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 function DynamicReadBlog() {
@@ -22,7 +23,6 @@ function DynamicReadBlog() {
   });
 
   const LoadComments = () => {
-    setLoadingComments(true);
     axios
       .get(
         `https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/${id}`
@@ -55,6 +55,7 @@ function DynamicReadBlog() {
         commentDate: Date.now(),
         commentText: newComments,
       };
+      setLoadingComments(true);
       axios
         .post(
           "https://cr-internship-blogtask-backend.onrender.com/api/blog/comments/create-comment",
@@ -76,6 +77,28 @@ function DynamicReadBlog() {
           setNewComments("");
         });
     }
+  };
+
+  const handleDeleteCommentClick = (e, id, blogID) => {
+    e.preventDefault();
+    const tempCommentDetails = {
+      blogID: blogID,
+      commentID: id,
+    };
+    setLoadingComments(true);
+    axios
+      .post(`https://cr-internship-blogtask-backend.onrender.com/api/blog/delete/comment`, tempCommentDetails)
+      .then((response) => {
+        if (response.data.message === "Comment deleted successfully") {
+          toast.success("Comment deleted successfully");
+          LoadComments();
+        } else {
+          toast.error("Try again!");
+        }
+      })
+      .catch((error) => {
+        toast.error("Something went wrong! Try again");
+      });
   };
 
   const handleOnChangeEvent = (e) => {
@@ -157,6 +180,10 @@ function DynamicReadBlog() {
             <div className="readBlogs__posterContainer">
               <img
                 src={blogData?.blogPoster}
+                onError={(event) => {
+                  event.target.src = `${defaultImg}`;
+                  event.onerror = null;
+                }}
                 alt={"Blog Poster"}
                 className="readBlogs__poster"
               />
@@ -224,7 +251,7 @@ function DynamicReadBlog() {
                                   {comments.authorName[0]}
                                 </p>
                                 <p className="OldComments__userName">
-                                  {comments.authorName}
+                                  {comments.authorName.split(" ")[0]}
                                   <span className="OldComments__creationDate">
                                     {Date(comments?.commentDate)
                                       .split(" ")
@@ -232,6 +259,21 @@ function DynamicReadBlog() {
                                       .join(" ")}
                                   </span>
                                 </p>
+                                {console.log(comments)}
+
+                                {currentUser.userEmail ===
+                                  comments.authorEmail && (
+                                  <i
+                                    className="fa-solid fa-trash OldComments__deleteButton"
+                                    onClick={(e) =>
+                                      handleDeleteCommentClick(
+                                        e,
+                                        comments._id,
+                                        comments.blogID
+                                      )
+                                    }
+                                  ></i>
+                                )}
                               </div>
                               <p className="OldComments__content">
                                 {comments.commentText}

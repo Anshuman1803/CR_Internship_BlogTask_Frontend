@@ -5,17 +5,23 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import EmptyPosts from "../components/EmptyPosts";
+import defaultImg from "../Assets/DefaultBlogPost.png";
 function BlogPage() {
   const [isLoading, setLoading] = useState(false);
   const [blogPosts, setBlogs] = useState([]);
 
   useEffect(() => {
     setLoading(true);
-    axios.get("https://cr-internship-blogtask-backend.onrender.com/api/blogposts/all").then((response) => {
-      setBlogs(response.data);
-      setLoading(false);
-    });
+    axios
+      .get(
+        "https://cr-internship-blogtask-backend.onrender.com/api/blogposts/all"
+      )
+      .then((response) => {
+        setBlogs(response.data);
+        setLoading(false);
+      });
   }, []);
+
   return (
     <>
       <Header />
@@ -25,7 +31,7 @@ function BlogPage() {
         ) : (
           <>
             {blogPosts.length === 0 ? (
-              <EmptyPosts message={"Oops! No blog posts yet"}/>
+              <EmptyPosts message={"Oops! No blog posts yet"} />
             ) : (
               <>
                 {blogPosts?.map((blog) => {
@@ -45,6 +51,10 @@ function BlogPage() {
                           alt="blog_Poster"
                           loading="lazy"
                           className="MyBlogsCards__Poster"
+                          onError={(event) => {
+                            event.target.src = `${defaultImg}`;
+                            event.onerror = null;
+                          }}
                         />
                       </div>
                       <div className="MyBlogsCards__detailsContainer">
@@ -53,7 +63,7 @@ function BlogPage() {
                           {blog.blogLikes}
                         </span>
                         <span className="MyBlogsCards__Reactions">
-                          <i className="fa-solid fa-comments MyBlogsCards__CommentsICON"></i>
+                          <i className="fa-regular fa-message MyBlogsCards__CommentsICON"></i>
                           {blog.blogComments}
                         </span>
                       </div>

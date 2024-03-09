@@ -3,10 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Loader from "../components/Loader";
 import MyBlog from "../pages/Dashboard/MyBlog";
 import DynamicReadBlog from "../pages/DynamicReadBlog";
-
+import HomePage from "../pages/HomePage"
+import BlogPage from "../pages/BlogPage"
 import DashboardContainer from "../pages/Dashboard/DashboardContainer";
-const HomePage = lazy(() => import("../pages/HomePage"));
-const BlogPage = lazy(() => import("../pages/BlogPage"));
 const ProfilePage = lazy(() => import("../pages/Dashboard/Profile"));
 const CreateBlog = lazy(() => import("../pages/Dashboard/CreateBlog"));
 const UpdateBlog = lazy(() => import("../pages/Dashboard/UpdateBlog"));
@@ -18,18 +17,14 @@ function AppRouter() {
       <Route
         path="/"
         element={
-          <Suspense fallback={<Loader />}>
             <HomePage />
-          </Suspense>
         }
       />
 
       <Route
         path="/blogs"
         element={
-          <Suspense fallback={<Loader />}>
             <BlogPage />
-          </Suspense>
         }
       />
 

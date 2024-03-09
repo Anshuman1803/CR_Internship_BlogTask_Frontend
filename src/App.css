@@ -731,7 +731,6 @@
   width: 45em;
   height: fit-content;
   margin: 30px 0px;
-
 }
 
 .readBlogs__poster {
@@ -836,13 +835,13 @@
   width: 150px;
   font-weight: 600;
   font-size: 18px;
-  background-color: hsl(354, 84%, 57%);
+  background-color: rgb(49, 160, 92);
   color: white;
 }
 
 .readBlogs__PostCommentButton:hover {
   cursor: pointer;
-  background-color: hsla(354, 84%, 57%, 0.822);
+  background-color: rgb(25, 150, 73);
 }
 
 .commentForm__itemBox_errMessage {
@@ -900,7 +899,7 @@
   border-radius: 10px;
   padding: 0.5em;
   position: relative;
-  word-wrap:normal;
+  word-wrap: normal;
 }
 
 .OldComments__userInformation {
@@ -911,9 +910,23 @@
   justify-content: flex-start;
   gap: 10px;
   padding-left: 1em;
-
+  position: relative;
 }
 
+.OldComments__deleteButton {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  color: hsl(354, 84%, 57%);
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+.OldComments__deleteButton:hover{
+  cursor: pointer;
+transform: scale(1.2);
+  color: hsla(354, 84%, 57%, 0.822);
+}
 .OldComments__userICON {
   width: 50px;
   height: 50px;
@@ -944,8 +957,8 @@
   padding: 0.5em;
   width: 100%;
   text-align: justify;
-word-break: break-all;
-width: 100%;
+  word-break: break-all;
+  width: 100%;
 }
 
 /* User Dashboard Container */
@@ -1105,6 +1118,7 @@ width: 100%;
 .DashboardSection__profile {
   overflow: auto;
   padding: 1em;
+  position: relative;
 }
 
 .profileSection__navigateButton {
@@ -1580,6 +1594,69 @@ width: 100%;
   color: white;
   font-weight: 400;
   padding: 0.3em 0em;
+}
+
+/* POPUp comment Box Container */
+
+.BlogComment__popupContainer {
+  border: 2px solid red;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #1f293737;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BlogComment__Popup {
+  width: 450px;
+  height: 650px;
+  background-color: rgb(17, 24, 39);
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px;
+}
+
+.BlogComment__Popup_heading {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0em 0.5em;
+}
+
+.PopupCloseButton {
+  font-size: 22px;
+}
+
+.PopupCloseButton:hover {
+  cursor: pointer;
+  color: hsl(354, 84%, 57%);
+}
+
+.BlogComment__Popup_CommentBox {
+  height: calc(100% - 50px);
+  overflow: hidden;
+  overflow-y: auto;
+  position: relative;
+  padding: 0.5em 0em;
+}
+
+.BlogComment__Popup__Comment {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.301);
+  padding: 0em 0.5em;
+  min-height: 110px;
+  margin-bottom: 10px;
+}
+
+.BlogComment__Popup__Comment .OldComments__userInformation {
+  padding: 0;
 }
 
 /* Footer */

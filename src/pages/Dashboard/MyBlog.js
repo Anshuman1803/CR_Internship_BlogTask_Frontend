@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 import EmptyPosts from "../../components/EmptyPosts";
-
+import defaultImg from '../../Assets/DefaultBlogPost.png'
 function MyBlog() {
   const { currentUser } = useSelector((state) => state.BlogApp);
   const [isLoading, setLoading] = useState(false);
@@ -109,6 +109,10 @@ function MyBlog() {
                         alt="blog_Poster"
                         loading="lazy"
                         className="MyBlogsCards__Poster"
+                        onError={event => {
+                          event.target.src = `${defaultImg}`
+                          event.onerror = null
+                        }}
                       />
                     </div>
                     <div className="MyBlogsCards__detailsContainer">
