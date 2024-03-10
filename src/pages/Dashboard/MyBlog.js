@@ -70,7 +70,7 @@ function MyBlog() {
                           {blog.authorName}
                         </span>
                         <span className="MyBlogsCard__publishDate">
-                          {Date(blog.blogDate).split(" ").slice(1, 4).join(" ")}
+                        {blog?.blogDate.split("T")[0]}
                         </span>
                       </p>
                       <div className="MyBlogsCard__OptionsContainer">
@@ -114,12 +114,9 @@ function MyBlog() {
                           event.onerror = null
                         }}
                       />
+                      <Link to={`/blogs/blog/${blog._id}`} className="MyBlogsCards__blogTitle">{blog.blogTitle}</Link>
                     </div>
                     <div className="MyBlogsCards__detailsContainer">
-                      <span className="MyBlogsCards__Reactions">
-                        <i className="fa-solid fa-heart MyBlogsCards__ReactionsICON"></i>
-                        {blog.blogLikes}
-                      </span>
                       <span className="MyBlogsCards__Reactions">
                         <i className="fa-solid fa-comments MyBlogsCards__CommentsICON"></i>
                         {blog.blogComments}

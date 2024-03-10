@@ -59,10 +59,6 @@ function BlogPage() {
                       </div>
                       <div className="MyBlogsCards__detailsContainer">
                         <span className="MyBlogsCards__Reactions">
-                          <i className="fa-solid fa-heart MyBlogsCards__ReactionsICON"></i>
-                          {blog.blogLikes}
-                        </span>
-                        <span className="MyBlogsCards__Reactions">
                           <i className="fa-regular fa-message MyBlogsCards__CommentsICON"></i>
                           {blog.blogComments}
                         </span>

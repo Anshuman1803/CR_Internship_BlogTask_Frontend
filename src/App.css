@@ -786,12 +786,18 @@
 
 .commentSections__CommentCounter {
   color: white;
-  padding: 1em 0em;
+  padding: 1em 1em 1em 0em;
   font-size: 18px;
   font-weight: 600;
   border-width: 1px 0px 1px 0px;
   border-style: solid;
   border-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.commentSections__blogLikeButton{
+font-size: 20px;
 }
 
 .commentSections__form {
@@ -922,11 +928,13 @@
   font-size: 18px;
   transition: all 0.3s ease-in-out;
 }
-.OldComments__deleteButton:hover{
+
+.OldComments__deleteButton:hover {
   cursor: pointer;
-transform: scale(1.2);
+  transform: scale(1.2);
   color: hsla(354, 84%, 57%, 0.822);
 }
+
 .OldComments__userICON {
   width: 50px;
   height: 50px;
@@ -1280,7 +1288,6 @@ transform: scale(1.2);
   border: 2px solid rgba(255, 255, 255, 0.226);
   width: 100%;
   height: 400px;
-  /* cursor: pointer; */
 }
 
 .MyBlogsCards__headerContainer {
@@ -1411,13 +1418,33 @@ transform: scale(1.2);
 .MyBlogsCards__posterContainer {
   height: 280px;
   overflow: hidden;
+  position: relative;
 }
+
+.MyBlogsCards__blogTitle {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 22px;
+  width: 100%;
+  padding: 0.5em;
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
+}
+.MyBlogsCards__blogTitle:hover{
+  cursor: pointer;
+  text-decoration:underline;
+
+}
+
 
 .MyBlogsCards__Poster {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.6s ease-in-out;
+  filter: contrast(100%) brightness(60%);
 }
 
 .MyBlogsCards__detailsContainer {

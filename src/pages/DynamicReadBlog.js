@@ -9,13 +9,11 @@ import { useSelector } from "react-redux";
 function DynamicReadBlog() {
   const { currentUser } = useSelector((state) => state.BlogApp);
   const commentInputRef = useRef();
-  const CharacterLimit = 200;
   const { id } = useParams();
   const [blogData, Setblog] = useState(null);
   const [blogComments, setblogComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [newComments, setNewComments] = useState("");
-  const [CharacterCounter, setCharacter] = useState(0);
   const [LoadingComments, setLoadingComments] = useState(false);
   const [errors, setError] = useState({
     commentError: false,
@@ -41,13 +39,7 @@ function DynamicReadBlog() {
         commentError: true,
         errMsg: "Required*",
       });
-    } else if (newComments.length < 20) {
-      commentInputRef.current.focus();
-      setError({
-        commentError: true,
-        errMsg: "Comments should be more descriptive.",
-      });
-    } else {
+    }else {
       const newCommentDetails = {
         blogID: blogData._id,
         authorName: currentUser.user,
@@ -65,7 +57,6 @@ function DynamicReadBlog() {
           if (response.data.message === "Comment added successfully") {
             toast.success("Comment added successfully");
             setNewComments("");
-            setCharacter(0);
             LoadComments();
           } else {
             toast.error("Try again");
@@ -106,34 +97,12 @@ function DynamicReadBlog() {
       commentError: false,
       errMsg: "",
     });
-    if (
-      e.nativeEvent.inputType === "deleteContentBackward" ||
-      CharacterCounter !== CharacterLimit
-    ) {
-      setNewComments(e.target.value);
-    }
-    if (
-      CharacterCounter !== CharacterLimit &&
-      e.nativeEvent.inputType !== "deleteContentBackward"
-    ) {
-      setCharacter(CharacterCounter + 1);
-    }
-    if (CharacterCounter === CharacterLimit) {
-      setError({
-        commentError: true,
-        errMsg: "Limit exceeded",
-      });
-    }
+    setNewComments(e.target.value);
   };
 
-  const handlekeydownEVENT = (e) => {
-    if (e.code === "Backspace" && CharacterCounter > 0) {
-      setCharacter(CharacterCounter - 1);
-    }
-  };
+
 
   useEffect(() => {
-    setCharacter(0);
     setNewComments("");
     setLoading(true);
     axios
@@ -174,7 +143,7 @@ function DynamicReadBlog() {
                 {blogData?.blogCategory}
               </span>
               <span className="readBlogs__createdAt">
-                {Date(blogData?.blogDate).split(" ").slice(1, 4).join(" ")}
+                {blogData?.blogDate.split("T")[0]}
               </span>
             </div>
             <div className="readBlogs__posterContainer">
@@ -195,7 +164,7 @@ function DynamicReadBlog() {
 
             <div className="readBlog__CommentSections">
               <p className="commentSections__CommentCounter">
-                Comments {blogComments.length}
+                Comments: {blogComments.length}
               </p>
 
               <form className="commentSections__form">
@@ -209,7 +178,6 @@ function DynamicReadBlog() {
                     onChange={handleOnChangeEvent}
                     value={newComments}
                     ref={commentInputRef}
-                    onKeyDown={handlekeydownEVENT}
                   />
                   <button
                     className="readBlogs__PostCommentButton"
@@ -223,9 +191,6 @@ function DynamicReadBlog() {
                     {errors.errMsg}
                   </p>
                 )}
-                <p className="newComments__CharacterLimit">
-                  {CharacterCounter} / {CharacterLimit}
-                </p>
               </form>
 
               <div className="commentSections__AllCommentsBox">
@@ -253,14 +218,9 @@ function DynamicReadBlog() {
                                 <p className="OldComments__userName">
                                   {comments.authorName.split(" ")[0]}
                                   <span className="OldComments__creationDate">
-                                    {Date(comments?.commentDate)
-                                      .split(" ")
-                                      .slice(1, 4)
-                                      .join(" ")}
+                                  {comments?.commentDate.split("T")[0]}
                                   </span>
                                 </p>
-                                {console.log(comments)}
-
                                 {currentUser.userEmail ===
                                   comments.authorEmail && (
                                   <i
