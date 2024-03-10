@@ -6,7 +6,9 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function CreateBlog() {
+  const navigateTo = useNavigate()
   const { currentUser } = useSelector((state) => state.BlogApp);
   const titleRef = useRef();
   const posterRef = useRef();
@@ -103,6 +105,7 @@ function CreateBlog() {
             clearFields();
             titleRef.current.focus();
             setLoading(false);
+            navigateTo("/user/dashboard/my-blogs")
           } else {
             toast.error("something went wrong! try Again");
             clearFields();

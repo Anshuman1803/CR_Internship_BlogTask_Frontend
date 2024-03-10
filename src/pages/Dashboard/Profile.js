@@ -2,33 +2,46 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../components/Loader";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { UserLoggedOut } from "../../Redux/ReduxSlice";
 function Profile() {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.BlogApp);
   const navigateTO = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [userDetails, setUser] = useState(null);
-  const [totalLikes] = useState(0);
-  const [totalPosts] = useState(0);
-  const [totalComments] = useState(0);
+
+  const handleDeleteAccountClick = (e, email) => {
+    e.preventDefault();
+    setLoading(true)
+    axios
+      .post(`https://cr-internship-blogtask-backend.onrender.com/api/user/deleteuser/${email}`)
+      .then((response) => {
+        setLoading(false)
+        if (response.data.success) {
+          toast.error("Account deleted successfully");
+        dispatch( UserLoggedOut(false))
+        } else {
+          toast.error("Something went wrong");
+        }
+      })
+      .catch((err) => {
+        setLoading(false)
+        toast.error("Something went wrong! Try again");
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
     axios
-      .all([
-        axios.get(
-          `https://cr-internship-blogtask-backend.onrender.com/api/user/${currentUser._id}`
-        ),
-        axios.get(
-          `https://cr-internship-blogtask-backend.onrender.com/api/user/blog/${currentUser.userEmail}`
-        ),
-      ])
-      .then(
-        axios.spread((userResponse, blogResponse) => {
-          setLoading(false);
-          setUser(userResponse.data);
-        })
+      .get(
+        `https://cr-internship-blogtask-backend.onrender.com/api/user/${currentUser._id}`
       )
+      .then((response) => {
+        setUser(response.data);
+        setLoading(false);
+      })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
@@ -72,28 +85,14 @@ function Profile() {
             </div>
 
             <div className="infoContainer__infoRows">
-              <button className="inforContainer__deleteButton">
+              <button
+                className="inforContainer__deleteButton"
+                onClick={(e) =>
+                  handleDeleteAccountClick(e, userDetails?.userEmail)
+                }
+              >
                 Delete Account
               </button>
-            </div>
-          </div>
-
-          <div className="ProfileSection__cardContainer">
-            <div className="ProfileSection__cards">
-              <h3 className="ProfileSectionCards__title">Total Posts</h3>
-              <span className="ProfileSectionCards__Number">{totalLikes}</span>
-            </div>
-
-            <div className="ProfileSection__cards">
-              <h3 className="ProfileSectionCards__title">Total Likes</h3>
-              <span className="ProfileSectionCards__Number">{totalPosts}</span>
-            </div>
-
-            <div className="ProfileSection__cards">
-              <h3 className="ProfileSectionCards__title">Total Comment</h3>
-              <span className="ProfileSectionCards__Number">
-                {totalComments}
-              </span>
             </div>
           </div>
         </>

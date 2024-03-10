@@ -1127,6 +1127,7 @@ font-size: 20px;
   overflow: auto;
   padding: 1em;
   position: relative;
+  display: flex;
 }
 
 .profileSection__navigateButton {
@@ -1167,10 +1168,10 @@ font-size: 20px;
 }
 
 .ProfileSection__infoContainer {
-  box-shadow: hsla(354, 84%, 57%, 0.315) 0px 1px 2px 0px, hsla(354, 84%, 57%, 0.158) 0px 1px 3px 1px;
   border-radius: 10px;
   padding: 0.5em;
   width: 100%;
+  margin: auto;
 }
 
 .infoContainer__userInitials {
