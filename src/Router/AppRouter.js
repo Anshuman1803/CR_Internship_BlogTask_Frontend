@@ -78,6 +78,14 @@ function AppRouter() {
             </Suspense>
           }
         />
+        <Route
+          path={`/user/dashboard/update-blog/:id`}
+          element={
+            <Suspense fallback={<Loader />}>
+              <UpdateBlog/>
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );

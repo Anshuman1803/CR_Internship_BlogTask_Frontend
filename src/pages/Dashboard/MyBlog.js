@@ -86,7 +86,7 @@ function MyBlog() {
                             </Link>
                           </li>
                           <li className="MyBlogsCard__Option">
-                            <Link to="" className="MyBlogsCard__OptionLINKS">
+                            <Link to={`/user/dashboard/update-blog/${blog._id}`} state={blog} className="MyBlogsCard__OptionLINKS">
                               Update blog{" "}
                               <i className="fa-solid fa-file-pen MyBlogsCard__OptionICON"></i>
                             </Link>
@@ -118,7 +118,7 @@ function MyBlog() {
                     </div>
                     <div className="MyBlogsCards__detailsContainer">
                       <span className="MyBlogsCards__Reactions">
-                        <i className="fa-solid fa-comments MyBlogsCards__CommentsICON"></i>
+                        <i className="fa-regular fa-message MyBlogsCards__CommentsICON"></i>
                         {blog.blogComments}
                       </span>
                     </div>

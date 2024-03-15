@@ -481,6 +481,7 @@
   grid-template-columns: repeat(auto-fit, minmax(500px, 500px));
   justify-content: flex-start;
   gap: 20px;
+  justify-content: center;
 }
 
 .MYBlogsCards__title {
@@ -1538,7 +1539,16 @@ font-size: 20px;
   justify-content: center;
   border-top: 1px solid rgba(255, 255, 255, 0.24);
 }
-
+.updatePost__buttoncontainer{
+  padding: 0em 1em;
+  justify-content: space-between;
+}
+.updatePost__buttoncontainer button{
+  width: 160px;
+}
+.updatePost__buttoncontainer button:nth-child(1){
+background-color: hsla(354, 84%, 57%, 0.795);
+}
 .BlogPost__publishButton {
   border: none;
   outline: none;
@@ -1696,12 +1706,6 @@ font-size: 20px;
   background-color: #1f2937;
 }
 
-@media screen and (max-width: 1052px) {
-  .appSection__allBlogs {
-    justify-content: center;
-
-  }
-}
 
 @media screen and (max-width: 851px) {
   .Dashboard__hamMENU {
